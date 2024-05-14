@@ -32,9 +32,9 @@ import static junit.framework.TestCase.assertTrue;
  *
  * @author Sonia
  */
-public class HuevoSorpresaTest {
+public class HuevoSorpresaMilagrosRubioTest {
     
-    public HuevoSorpresaTest() {
+    public HuevoSorpresaMilagrosRubioTest() {
     }
     
     @BeforeClass
@@ -59,7 +59,7 @@ public class HuevoSorpresaTest {
 //    @Test
 //    public void testObtenerUnidades() {
 //        System.out.println("obtenerUnidades");
-//        HuevoSorpresa instance = new HuevoSorpresa();
+//        HuevoSorpresaMilagrosRubio instance = new HuevoSorpresaMilagrosRubio();
 //        int expResult = 0;
 //        int result = instance.obtenerUnidades();
 //        assertEquals(expResult, result);
@@ -74,7 +74,7 @@ public class HuevoSorpresaTest {
 //    public void testModificarUnidades() {
 //        System.out.println("modificarUnidades");
 //        int unidades = 0;
-//        HuevoSorpresa instance = new HuevoSorpresa();
+//        HuevoSorpresaMilagrosRubio instance = new HuevoSorpresaMilagrosRubio();
 //        instance.modificarUnidades(unidades);
 //        // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
@@ -89,8 +89,8 @@ public class HuevoSorpresaTest {
         System.out.println("Test sacarHuevoSorpresa con éxito.");
         int unidades = 10;
         double dinero = 15;
-        HuevoSorpresa instance = new HuevoSorpresa(200,1,"Peppa Pig",2);
-        instance.sacarHuevosSorpresas(unidades,dinero);
+        HuevoSorpresaMilagrosRubio instance = new HuevoSorpresaMilagrosRubio(200,1,"Peppa Pig",2);
+        instance.sacarHuevosSorpresas(unidades,dinero, "minion");
         assertTrue(instance.obtenerUnidades()==190); /* Como inicialmente hay 200 huevos sorpresa en la tienda
         y saco 10, deben quedar 190 huevos sorpresas en la máquina si todo ha ido bien. */
     }
@@ -104,9 +104,9 @@ public class HuevoSorpresaTest {
         System.out.println("Test sacarHuevosSorpresa con valor negativo.");
         int unidades = -1;
         double dinero = 15;
-        HuevoSorpresa instance = new HuevoSorpresa(200,1,"Peppa Pig",2);
+        HuevoSorpresaMilagrosRubio instance = new HuevoSorpresaMilagrosRubio(200,1,"Peppa Pig",2);
         try{
-            instance.sacarHuevosSorpresas(unidades,dinero);
+            instance.sacarHuevosSorpresas(unidades,dinero, "minion");
             fail("La prueba falla si no salta una excepción con un valor negativo");
          } catch (Exception e){
                  assertTrue(instance.obtenerUnidades()==200); /* Como parto de una cantidad de 200 huevos sorpresa
@@ -124,9 +124,9 @@ public class HuevoSorpresaTest {
         System.out.println("Test sacarBola con 0 unidades.");
         int unidades = 0;
         double dinero = 15;
-        HuevoSorpresa instance = new HuevoSorpresa(200,1,"Peppa Pig",2);
+        HuevoSorpresaMilagrosRubio instance = new HuevoSorpresaMilagrosRubio(200,1,"Peppa Pig",2);
         try{
-            instance.sacarHuevosSorpresas(unidades,dinero);
+            instance.sacarHuevosSorpresas(unidades,dinero, "minion");
             fail("La prueba falla si no salta una excepción al intentar sacar 0 huevos sorpresas");
          } catch (Exception e){
                  assertTrue(instance.obtenerUnidades()==200); /* Como parto de una cantidad de 200 huevos sorpresas
@@ -144,9 +144,9 @@ public class HuevoSorpresaTest {
         System.out.println("Test sacarBola con más huevos sorpresas de las disponibles.");
         int unidades = 250;
         double dinero = 300;
-        HuevoSorpresa instance = new HuevoSorpresa(200,1,"Peppa Pig",2);
+        HuevoSorpresaMilagrosRubio instance = new HuevoSorpresaMilagrosRubio(200,1,"Peppa Pig",2);
         try{
-            instance.sacarHuevosSorpresas(unidades,dinero);
+            instance.sacarHuevosSorpresas(unidades,dinero, "minion");
             fail("La prueba falla si no salta una excepción al intentar sacar más huevos sorpresas de las que tiene la tienda");
          } catch (Exception e){
                  assertTrue(instance.obtenerUnidades()==200); /* Como parto de una cantidad de 200 huevos sorpresas
@@ -164,9 +164,9 @@ public class HuevoSorpresaTest {
         System.out.println("Test sacarHuevosSorpresa con dinero insuficiente.");
         int unidades = 2;
         double dinero = 1;
-        HuevoSorpresa instance = new HuevoSorpresa(200,1,"Peppa Pig",2);
+        HuevoSorpresaMilagrosRubio instance = new HuevoSorpresaMilagrosRubio(200,1,"Peppa Pig",2);
         try{
-            instance.sacarHuevosSorpresas(unidades,dinero);
+            instance.sacarHuevosSorpresas(unidades,dinero, "minion");
             fail("La prueba falla si no salta una excepción al intentar sacar más huevos sorpresas de las que tiene la máquina");
          } catch (Exception e){
                  assertTrue(instance.obtenerUnidades()==200); /* Como parto de una cantidad de 200 huevos sorpresas
@@ -184,7 +184,7 @@ public class HuevoSorpresaTest {
     public void testAumentarPrecioValido() throws Exception {
         System.out.println("aumentarPrecio");
         double aumento = 0.5;
-        HuevoSorpresa instance = new HuevoSorpresa(200,1,"Peppa Pig",2);
+        HuevoSorpresaMilagrosRubio instance = new HuevoSorpresaMilagrosRubio(200,1,"Peppa Pig",2);
         instance.aumentarPrecio(aumento);
         assertTrue(instance.obtenerPrecio()==1.5); /* Como el precio inicial del huevo sorpresa es 1, al aumentarle
         0.5 no se superaría el máximo permitido que es 2, por lo tanto se quedaría en un precio de 1.5 */  
